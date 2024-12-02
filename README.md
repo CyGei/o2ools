@@ -10,7 +10,7 @@ devtools::install_github("CyGei/o2ools")
 
 ## Functions
 
-## `identify`
+### `identify`
 
 Replace integers from the `outbreaker2` output with unique identifiers from the linelist.
 
