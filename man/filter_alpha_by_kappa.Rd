@@ -13,6 +13,11 @@ filter_alpha_by_kappa(out, kappa_max)
 }
 \value{
 The modified outbreaker2 data.frame with filtered alpha values.
+
+#' @examples
+\dontrun{
+filter_alpha_by_kappa(out, kappa_max = 1)
+}
 }
 \description{
 This function filters the alpha values in an outbreaker2 data.frame based on a given threshold for kappa. i.e. it keeps only the ancestors that are below a given number of generations.

@@ -7,6 +7,10 @@
 #'
 #' @return The modified outbreaker2 data.frame with filtered alpha values.
 #'
+#'#' @examples
+#' \dontrun{
+#' filter_alpha_by_kappa(out, kappa_max = 1)
+#' }
 #'
 #' @export
 filter_alpha_by_kappa <- function(out, kappa_max) {

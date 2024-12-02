@@ -7,7 +7,7 @@
 get_trees(out, ids, kappa = FALSE, t_inf = FALSE, ...)
 }
 \arguments{
-\item{out}{A data frame of class "outbreaker_chains".}
+\item{out}{A data frame of class \code{outbreaker_chains}.}
 
 \item{ids}{A vector of IDs from the original linelist.}
 
@@ -22,7 +22,7 @@ A list of data frames. Each data frame has 'from' and 'to' columns,
 and additional columns based on the additional arguments.
 }
 \description{
-This function takes an outbreaker2 object and returns a list of data frames with the 'from' and 'to' columns, and additional columns if provided.
+This function takes an \code{outbreaker_chains} object and returns a list of data frames with the 'from' and 'to' columns, and additional columns if provided.
 The additional arguments should be vectors of values, and the name of the argument will be used as the name of the additional column.
 The additional columns will be named 'from_' and 'to_' followed by the name of the argument.
 }

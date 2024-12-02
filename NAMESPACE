@@ -3,3 +3,4 @@
 export(filter_alpha_by_kappa)
 export(get_trees)
 export(identify)
+export(sample.outbreaker_chains)
