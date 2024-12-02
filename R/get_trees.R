@@ -2,14 +2,14 @@
 #' Return a list of posterior transmission trees from an outbreaker2 object.
 #'
 #' This function takes an outbreaker2 object and returns a list of data frames with the 'from' and 'to' columns, and additional columns if provided.
-#' The additional arguments should be vectors of values, and the name of the argument will be used as the name of the additional column. 
+#' The additional arguments should be vectors of values, and the name of the argument will be used as the name of the additional column.
 #' The additional columns will be named 'from_' and 'to_' followed by the name of the argument.
 #'
 #' @param out  A data frame of class "outbreaker_chains".
 #' @param ids  A vector of IDs from the original linelist.
 #' @param kappa A logical value indicating whether to include the kappa values in the output.
-#' @param ... Additional columns from the original linelist to include. Each argument should be an atomic vector of values, 
-#' and the name of the argument will be used as the name of the additional column.
+#' @param t_inf A logical value indicating whether to include the kappa values in the output.
+#' @param ... Additional columns from the original linelist to include (e.g. loc = linelist$location).
 #'
 #' @return A list of data frames. Each data frame has 'from' and 'to' columns,
 #'         and additional columns based on the additional arguments.
@@ -31,7 +31,7 @@ args <- list(...)
 stopifnot(all(sapply(args, is.atomic)))
 
 # Create a mapping of ids to their original indices
-id_map <- setNames(seq_along(ids), ids)
+id_map <- stats::setNames(seq_along(ids), ids)
 
 # Retrieve all columns starting with alpha_
 alpha_cols <- grep("^alpha_", names(out), value = TRUE)
