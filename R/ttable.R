@@ -13,7 +13,7 @@
 #' from <- c("A", "A", NA, "C", "C", "C")
 #' to <- c("A", "B", "B", "C", "C", "C")
 #' ttable(from, to)
-#'
+#' @export
 ttable <- function(from, to, levels = NULL, ...) {
   if (!is.vector(from) || !is.vector(to) || length(from) != length(to)) {
     stop("'from' and 'to' must be vectors of the same length.")

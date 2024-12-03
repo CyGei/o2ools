@@ -25,5 +25,4 @@ Generates a contingency table given the 'from' and 'to' vectors.
 from <- c("A", "A", NA, "C", "C", "C")
 to <- c("A", "B", "B", "C", "C", "C")
 ttable(from, to)
-
 }
