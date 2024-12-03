@@ -8,8 +8,6 @@
 #' @param ... Additional arguments to be passed to the 'table' function.
 #'
 #' @return A contingency table representing the counts of infectors (rows) and infectees (columns) in each group (level).
-#' @keywords internal
-#' @noRd
 #'
 #' @examples
 #' from <- c("A", "A", NA, "C", "C", "C")
