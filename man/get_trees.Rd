@@ -13,7 +13,7 @@ get_trees(out, ids, kappa = FALSE, t_inf = FALSE, ...)
 
 \item{kappa}{A logical value indicating whether to include the kappa values in the output.}
 
-\item{t_inf}{A logical value indicating whether to include the kappa values in the output.}
+\item{t_inf}{A logical value indicating whether to include the t_inf values in the output.}
 
 \item{...}{Additional columns from the original linelist to include (e.g. loc = linelist$location).}
 }

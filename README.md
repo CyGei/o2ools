@@ -33,3 +33,12 @@ Return only the ancestors (*alpha*) that are below a given number of generations
 ```         
 filter_alpha_by_kappa(out, kappa_max = 1)
 ```
+
+### `get_accuracy`
+Accuracy of outbreak reconstruction is defined as the proportion of correctly inferred transmission pairs.
+You thus need to provide the true transmission pairs as input (a data frame with columns `from` and `to`).
+
+```
+get_accuracy(out, true_tt)
+```
+
