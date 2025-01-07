@@ -8,7 +8,7 @@
 #' @param out  A data frame of class \code{outbreaker_chains}.
 #' @param ids  A vector of IDs from the original linelist.
 #' @param kappa A logical value indicating whether to include the kappa values in the output.
-#' @param t_inf A logical value indicating whether to include the kappa values in the output.
+#' @param t_inf A logical value indicating whether to include the t_inf values in the output.
 #' @param ... Additional columns from the original linelist to include (e.g. loc = linelist$location).
 #'
 #' @return A list of data frames. Each data frame has 'from' and 'to' columns,
@@ -21,52 +21,64 @@
 #' }
 #'
 get_trees <- function(out,
-  ids,
-  kappa = FALSE,
-  t_inf = FALSE,
-  ...) {
-# Check inputs
-stopifnot(is.data.frame(out))
-args <- list(...)
-stopifnot(all(sapply(args, is.atomic)))
+                      ids,
+                      kappa = FALSE,
+                      t_inf = FALSE,
+                      ...) {
+  # Check inputs
+  stopifnot(is.data.frame(out))
+  args <- list(...)
+  stopifnot(all(sapply(args, is.atomic)))
 
-# Create a mapping of ids to their original indices
-id_map <- stats::setNames(seq_along(ids), ids)
+  # Default columns from outbreaker2
+  cols <- names(out)
+  alpha_cols <- grep("^alpha_", cols, value = TRUE)
+  kappa_cols <- grep("^kappa_", cols, value = TRUE)
+  t_inf_cols <- grep("^t_inf_", cols, value = TRUE)
 
-# Retrieve all columns starting with alpha_
-alpha_cols <- grep("^alpha_", names(out), value = TRUE)
-to <- gsub("alpha_", "", alpha_cols)
 
-kappa_cols <- grep("^kappa_", names(out), value = TRUE)
-t_inf_cols <- grep("^t_inf_", names(out), value = TRUE)
+  # Determine type of 'alpha' values are characters or integers
+  # see o2ools::identify() for more details
+  from_class <- class(out[[alpha_cols[1]]])
 
-# Create a list of data frames, each with 'from' and 'to' columns
-tree_list <- lapply(seq_len(nrow(out)), function(i) {
-from <- unlist(out[i, alpha_cols], use.names = FALSE)
-if (is.integer(from)) {
-to <- as.integer(to)
-}
+  # Helper to map values
+  map_ids <- function(x) {
+    if (from_class == "character") {
+      x
+    } else if (from_class == "integer") {
+      ids[as.integer(x)]
+    } else {
+      stop("Unknown class for 'alpha' values")
+    }
+  }
 
-df <- data.frame(from = from,
- to = to,
- stringsAsFactors = FALSE)
 
-if (kappa) {
-df$kappa <- unlist(out[i, kappa_cols], use.names = FALSE)
-}
-if (t_inf) {
-df$t_inf <- unlist(out[i, t_inf_cols], use.names = FALSE)
-}
+  # Generate trees
+  tree_list <- lapply(seq_len(nrow(out)), function(i) {
+    from <- map_ids(unlist(out[i, alpha_cols], use.names = FALSE))
+    to <- map_ids(gsub("alpha_", "", alpha_cols))
 
-# Add additional columns
-for (arg in names(args)) {
-map <- args[[arg]]
-df[paste0("from_", arg)] <- map[id_map[df$from]]
-df[paste0("to_", arg)] <- map[id_map[df$to]]
-}
+    df <- data.frame(from = from,
+                     to = to,
+                     stringsAsFactors = FALSE)
 
-df
-})
+    if (kappa) {
+      df$kappa <- unlist(out[i, kappa_cols], use.names = FALSE)
+    }
+    if (t_inf) {
+      df$t_inf <- unlist(out[i, t_inf_cols], use.names = FALSE)
+    }
 
-return(tree_list)
+    # Add additional columns from 'args'
+    for (arg in names(args)) {
+      vec <- args[[arg]]
+      names(vec) <- ids
+      df[paste0("from_", arg)] <- vec[from]
+      df[paste0("to_", arg)] <- vec[to]
+    }
+
+    df
+  })
+
+  return(tree_list)
 }
