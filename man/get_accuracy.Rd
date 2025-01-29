@@ -2,9 +2,7 @@
 % Please edit documentation in R/get_accuracy.R
 \name{get_accuracy}
 \alias{get_accuracy}
-\title{Calculate accuracy of a outbreak reconstruction
-Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
-across the posterior sample.}
+\title{Calculate accuracy of a outbreak reconstruction}
 \usage{
 get_accuracy(est_tt, true_tt)
 }
@@ -18,7 +16,6 @@ Each element is a data frame containing the transmission tree with columns 'from
 A numeric vector of accuracy values for each posterior tree.
 }
 \description{
-Calculate accuracy of a outbreak reconstruction
 Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
 across the posterior sample.
 }

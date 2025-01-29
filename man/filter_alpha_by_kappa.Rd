@@ -13,6 +13,7 @@ filter_alpha_by_kappa(out, kappa_max)
 }
 \value{
 A modified \code{outbreaker_chains} data frame with alpha values filtered based on the kappa threshold.
+That means that if the value of \code{kappa} is greater than \code{kappa_max}, the corresponding \code{alpha} value will be set to \code{NA}.
 }
 \description{
 Filters \code{alpha} values in an \code{outbreaker_chains} object based on a specified threshold for \code{kappa}, removing ancestors beyond the given number of generations.

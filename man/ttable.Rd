@@ -2,7 +2,7 @@
 % Please edit documentation in R/ttable.R
 \name{ttable}
 \alias{ttable}
-\title{Transmission table}
+\title{Compute the transmission table}
 \usage{
 ttable(from, to, levels = NULL, ...)
 }

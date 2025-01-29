@@ -6,6 +6,7 @@
 #' @param kappa_max A single integer specifying the maximum allowed number of generations (`kappa`).
 #'
 #' @return A modified \code{outbreaker_chains} data frame with alpha values filtered based on the kappa threshold.
+#' That means that if the value of `kappa` is greater than `kappa_max`, the corresponding `alpha` value will be set to `NA`.
 #'
 #' @examples
 #' \dontrun{

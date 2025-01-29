@@ -1,4 +1,4 @@
-#' Transmission table
+#' Compute the transmission table
 #'
 #' Generates a contingency table given the 'from' and 'to' vectors.
 #'

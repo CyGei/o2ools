@@ -1,4 +1,5 @@
 #' Calculate accuracy of a outbreak reconstruction
+#'
 #' Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
 #' across the posterior sample.
 #'
