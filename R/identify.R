@@ -13,8 +13,7 @@
 #'
 identify <- function(out, ids) {
   # Check inputs
-  stopifnot(is.data.frame(out))
-  stopifnot(inherits(out, "outbreaker_chains"))
+  is_outbreaker_chains(out)
   stopifnot(is.character(ids))
 
   alpha_cols <- grep("^alpha_", names(out), value = TRUE)

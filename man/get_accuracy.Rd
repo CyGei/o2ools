@@ -4,12 +4,13 @@
 \alias{get_accuracy}
 \title{Calculate accuracy of a outbreak reconstruction
 Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
-across the posterior chain.}
+across the posterior sample.}
 \usage{
-get_accuracy(chain, true_tt)
+get_accuracy(est_tt, true_tt)
 }
 \arguments{
-\item{chain}{A list of data frames, each containing a posterior chain of transmission trees.}
+\item{est_tt}{A list of transmission trees. See \code{get_trees}.
+Each element is a data frame containing the transmission tree with columns 'from' and 'to'.}
 
 \item{true_tt}{A data frame containing the true transmission tree. Columns 'from' and 'to' are required.}
 }
@@ -19,5 +20,5 @@ A numeric vector of accuracy values for each posterior tree.
 \description{
 Calculate accuracy of a outbreak reconstruction
 Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
-across the posterior chain.
+across the posterior sample.
 }

@@ -2,20 +2,20 @@
 % Please edit documentation in R/filter_alpha_by_kappa.R
 \name{filter_alpha_by_kappa}
 \alias{filter_alpha_by_kappa}
-\title{Filter alpha values based on kappa threshold}
+\title{Filter ancestries by generation threshold}
 \usage{
 filter_alpha_by_kappa(out, kappa_max)
 }
 \arguments{
-\item{out}{The outbreaker2 data.frame.}
+\item{out}{A data frame of class \code{outbreaker_chains}.}
 
-\item{kappa_max}{The threshold value for kappa.}
+\item{kappa_max}{A single integer specifying the maximum allowed number of generations (\code{kappa}).}
 }
 \value{
-The modified outbreaker2 data.frame with filtered alpha values.
+A modified \code{outbreaker_chains} data frame with alpha values filtered based on the kappa threshold.
 }
 \description{
-This function filters the alpha values in an outbreaker2 data.frame based on a given threshold for kappa. i.e. it keeps only the ancestors that are below a given number of generations.
+Filters \code{alpha} values in an \code{outbreaker_chains} object based on a specified threshold for \code{kappa}, removing ancestors beyond the given number of generations.
 }
 \examples{
 \dontrun{

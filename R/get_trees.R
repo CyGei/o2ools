@@ -1,18 +1,16 @@
-
-#' Return a list of posterior transmission trees from an outbreaker2 object.
+#' Extract posterior transmission trees
 #'
-#' This function takes an \code{outbreaker_chains} object and returns a list of data frames with the 'from' and 'to' columns, and additional columns if provided.
-#' The additional arguments should be vectors of values, and the name of the argument will be used as the name of the additional column.
-#' The additional columns will be named 'from_' and 'to_' followed by the name of the argument.
+#' Generates a list of data frames representing posterior transmission trees from an \code{outbreaker_chains} object.
+#' Each tree is represented as a data frame with 'from' and 'to' columns, and optionally includes additional columns.
 #'
-#' @param out  A data frame of class \code{outbreaker_chains}.
-#' @param ids  A vector of IDs from the original linelist.
-#' @param kappa A logical value indicating whether to include the kappa values in the output.
-#' @param t_inf A logical value indicating whether to include the t_inf values in the output.
-#' @param ... Additional columns from the original linelist to include (e.g. loc = linelist$location).
+#' @param out A data frame of class \code{outbreaker_chains}.
+#' @param ids A character or integer vector of case IDs from the original linelist.
+#' @param kappa A logical indicating whether to include `kappa` values in the output. Default is \code{FALSE}.
+#' @param t_inf A logical indicating whether to include infection times (`t_inf`) in the output. Default is \code{FALSE}.
+#' @param ... Additional named vectors from the original linelist to include as columns (e.g., \code{loc = linelist$location}).
 #'
-#' @return A list of data frames. Each data frame has 'from' and 'to' columns,
-#'         and additional columns based on the additional arguments.
+#' @return A list of data frames. Each data frame contains 'from' and 'to' columns, and optionally includes kappa, t_inf, and additional columns.
+#'
 #' @export
 #'
 #' @examples
@@ -26,7 +24,7 @@ get_trees <- function(out,
                       t_inf = FALSE,
                       ...) {
   # Check inputs
-  stopifnot(is.data.frame(out))
+  is_outbreaker_chains(out)
   args <- list(...)
   stopifnot(all(sapply(args, is.atomic)))
 

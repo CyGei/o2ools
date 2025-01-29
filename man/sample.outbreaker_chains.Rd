@@ -4,10 +4,10 @@
 \alias{sample.outbreaker_chains}
 \title{Sample rows from an outbreaker_chains object}
 \usage{
-sample.outbreaker_chains(x, ...)
+sample.outbreaker_chains(out, ...)
 }
 \arguments{
-\item{x}{An object of class \code{outbreaker_chains}, which also inherits from \code{data.frame}.}
+\item{out}{A data frame of class \code{outbreaker_chains}.}
 
 \item{...}{Additional arguments to be passed to \code{sample()}, such as \code{size} or \code{replace}.}
 }
