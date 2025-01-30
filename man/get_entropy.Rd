@@ -4,25 +4,36 @@
 \alias{get_entropy}
 \title{Compute the entropy of transmission trees}
 \usage{
-get_entropy(out)
+get_entropy(out, normalise = TRUE)
 }
 \arguments{
 \item{out}{A data frame of class \code{outbreaker_chains} containing posterior samples of transmission ancestries (alpha).}
+
+\item{normalise}{Logical. If \code{TRUE} (default), entropy is normalised between 0 and 1. If \code{FALSE}, raw Shannon entropy is returned.}
 }
 \value{
 A numeric value representing the mean entropy of transmission trees across posterior samples.
 }
 \description{
-Computes the mean entropy of inferred transmission trees from \code{outbreaker2}.
-Entropy quantifies uncertainty in outbreak reconstruction, with higher values indicating greater ambiguity in who infected whom.
+Computes the mean entropy of inferred transmission trees from \code{outbreaker2}, quantifying uncertainty in who infected whom.
+By default, entropy is normalised to range from 0 (complete certainty) to 1 (maximum uncertainty).
 }
 \details{
-Entropy is a measure of uncertainty in who infected whom.
-The entropy of a discrete variable \(X\) with probabilities \(p_i\) is computed as:
+Entropy measures uncertainty in inferred infectors across posterior samples. It is computed as:
 
 \deqn{H(X) = -\sum p_i \log p_i}
 
-where \(p_i\) is the proportion of times each infector appears in a posterior sample for a given case.
+where \(p_i\) is the proportion of times each infector is inferred for a case.
+
+If \code{normalise = TRUE}, entropy is scaled by its maximum possible value, \(\log K\), where \(K\) is the number of distinct inferred infectors:
+
+\deqn{H^*(X) = \frac{H(X)}{\log K}}
+
+This ensures values range from 0 to 1, where:
+\itemize{
+\item \strong{0} complete certainty — the same infector is inferred across all samples.
+\item \strong{1} maximum uncertainty — all infectors are equally likely.
+}
 }
 \examples{
 # High entropy

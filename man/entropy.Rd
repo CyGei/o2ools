@@ -4,15 +4,17 @@
 \alias{entropy}
 \title{Compute entropy of a categorical variable}
 \usage{
-entropy(x)
+entropy(x, normalise = TRUE)
 }
 \arguments{
 \item{x}{A character vector representing observed categorical values.}
+
+\item{normalise}{Logical. If \code{TRUE}, entropy is normalised to range between 0 and 1. If \code{FALSE}, raw Shannon entropy is returned.}
 }
 \value{
 A numeric value representing the entropy of \code{x}.
 }
 \description{
-Computes the entropy of a categorical variable based on its observed probabilities.
+Computes the entropy of a categorical variable, with optional normalisation.
 }
 \keyword{internal}
