@@ -4,12 +4,10 @@
 \alias{get_trees}
 \title{Extract posterior transmission trees}
 \usage{
-get_trees(out, ids, kappa = FALSE, t_inf = FALSE, ...)
+get_trees(out, kappa = FALSE, t_inf = FALSE, ...)
 }
 \arguments{
 \item{out}{A data frame of class \code{outbreaker_chains}.}
-
-\item{ids}{A character or integer vector of case IDs from the original linelist.}
 
 \item{kappa}{A logical indicating whether to include \code{kappa} values in the output. Default is \code{FALSE}.}
 

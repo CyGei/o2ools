@@ -43,7 +43,7 @@ get_entropy <- function(out, normalise = TRUE) {
 
   i <- grep('alpha_', names(out))
   ent <- vapply(out[i], entropy, normalise = normalise, FUN.VALUE = numeric(1))
-  return(round(mean(ent), 2))
+  return(ent)
 }
 
 
