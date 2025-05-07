@@ -36,3 +36,4 @@ test_that("get_entropy is consistent with expectations", {
   expect_true(en_1 == 1)
   expect_true(round(mean(get_entropy(out_1, FALSE)), 2) == round(log(2), 2))
 })
+

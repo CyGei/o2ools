@@ -1,26 +1,26 @@
-#' Calculate accuracy of a outbreak reconstruction
+#' Calculate the accuracy of outbreak reconstruction
 #'
-#' Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
-#' across the posterior sample.
+#' Accuracy is defined as the proportion of correctly assigned ancestries across the posterior sample.
 #'
-#' @param est_tt A list of transmission trees. See \code{get_trees}.
-#' Each element is a data frame containing the transmission tree with columns 'from' and 'to'.
-#' @param true_tt A data frame containing the true transmission tree. Columns 'from' and 'to' are required.
+#' @param out An object of class \code{outbreaker_chains}.
+#' @param true_tree A data frame with the true transmission tree, including 'from' and 'to' columns.
 #'
 #' @return A numeric vector of accuracy values for each posterior tree.
 #'
-#'
 #' @export
 #'
+#' @examples
+#' true_tree <- data.frame(from = as.character(outbreaker2::fake_outbreak$ances), to = linelist$id)
+#' get_accuracy(out, true_tree)
 
-get_accuracy <- function(est_tt, true_tt) {
-  true_pairs <- paste(true_tt$from, true_tt$to, sep = "->")
-
+get_accuracy <- function(out, true_tree) {
+  true_pairs <- paste(true_tree$from, true_tree$to, sep = "->")
+  out_trees <- get_trees(out)
   accuracy <- function(df, true_pairs) {
     posterior_pairs <- paste(df$from, df$to, sep = "->")
     correct <- sum(posterior_pairs %in% true_pairs)
     correct / length(true_pairs)
   }
 
-  vapply(est_tt, function(x) accuracy(x, true_pairs), numeric(1))
+  vapply(out_trees, function(x) accuracy(x, true_pairs), numeric(1))
 }

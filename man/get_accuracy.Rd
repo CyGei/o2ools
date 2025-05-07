@@ -2,20 +2,22 @@
 % Please edit documentation in R/get_accuracy.R
 \name{get_accuracy}
 \alias{get_accuracy}
-\title{Calculate accuracy of a outbreak reconstruction}
+\title{Calculate the accuracy of outbreak reconstruction}
 \usage{
-get_accuracy(est_tt, true_tt)
+get_accuracy(out, true_tree)
 }
 \arguments{
-\item{est_tt}{A list of transmission trees. See \code{get_trees}.
-Each element is a data frame containing the transmission tree with columns 'from' and 'to'.}
+\item{out}{An object of class \code{outbreaker_chains}.}
 
-\item{true_tt}{A data frame containing the true transmission tree. Columns 'from' and 'to' are required.}
+\item{true_tree}{A data frame with the true transmission tree, including 'from' and 'to' columns.}
 }
 \value{
 A numeric vector of accuracy values for each posterior tree.
 }
 \description{
-Accuracy of outbreak reconstruction is defined as the proportion of correctly assigned ancestries
-across the posterior sample.
+Accuracy is defined as the proportion of correctly assigned ancestries across the posterior sample.
+}
+\examples{
+true_tree <- data.frame(from = as.character(outbreaker2::fake_outbreak$ances), to = linelist$id)
+get_accuracy(out, true_tree)
 }

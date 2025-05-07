@@ -2,24 +2,22 @@
 % Please edit documentation in R/identify.R
 \name{identify}
 \alias{identify}
-\title{Replace integers from the outbreaker2 output with unique identifiers.}
+\title{Replace integers in outbreaker2 output with unique identifiers}
 \usage{
 identify(out, ids)
 }
 \arguments{
-\item{out}{A data.frame of class "outbreaker_chains".}
+\item{out}{A data frame of class \code{outbreaker_chains}.}
 
-\item{ids}{A vector of IDs from the original linelist, see outbreaker2::outbreaker_data().}
+\item{ids}{A vector of IDs from the original linelist (see \code{outbreaker2::outbreaker_data()}).}
 }
 \value{
-The outbreaker_chains data.frame with the integers replaced by the corresponding IDs.
+A data frame of class \code{outbreaker_chains} with integers replaced by the corresponding IDs.
 }
 \description{
-Replace integers from the outbreaker2 output with unique identifiers.
+Replace integers in outbreaker2 output with unique identifiers
 }
 \examples{
-\dontrun{
-identify(out, ids)
-}
+identify(out, id = linelist$name)
 
 }

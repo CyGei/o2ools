@@ -2,7 +2,7 @@
 % Please edit documentation in R/ttable.R
 \name{ttable}
 \alias{ttable}
-\title{Compute the transmission table}
+\title{Compute the transmission contingency table}
 \usage{
 ttable(from, to, levels = NULL, ...)
 }
@@ -11,15 +11,15 @@ ttable(from, to, levels = NULL, ...)
 
 \item{to}{A vector of infectees.}
 
-\item{levels}{Optional. A vector of levels for the factors. Defaults to unique, sorted values of 'from' and 'to'.}
+\item{levels}{Optional. A vector of factor levels. Defaults to the unique, sorted values of 'from' and 'to'.}
 
-\item{...}{Additional arguments to be passed to the 'table' function.}
+\item{...}{Additional arguments passed to the \code{table} function.}
 }
 \value{
-A contingency table representing the counts of infectors (rows) and infectees (columns) in each group (level).
+A contingency table of infectors (rows) and infectees (columns).
 }
 \description{
-Generates a contingency table given the 'from' and 'to' vectors.
+Generates a contingency table based on 'from' (infector) and 'to' (infectee) vectors.
 }
 \examples{
 from <- c("A", "A", NA, "C", "C", "C")

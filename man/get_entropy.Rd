@@ -9,33 +9,32 @@ get_entropy(out, normalise = TRUE)
 \arguments{
 \item{out}{A data frame of class \code{outbreaker_chains} containing posterior samples of transmission ancestries (alpha).}
 
-\item{normalise}{Logical. If \code{TRUE} (default), entropy is normalised between 0 and 1. If \code{FALSE}, raw Shannon entropy is returned.}
+\item{normalise}{Logical. If \code{TRUE} (default), entropy is normalised between 0 and 1. If \code{FALSE}, returns raw Shannon entropy.}
 }
 \value{
 A numeric value representing the mean entropy of transmission trees across posterior samples.
 }
 \description{
-Computes the mean entropy of inferred transmission trees from \code{outbreaker2}, quantifying uncertainty in who infected whom.
-By default, entropy is normalised to range from 0 (complete certainty) to 1 (maximum uncertainty).
+Computes the mean entropy of transmission trees from \code{outbreaker2}, quantifying uncertainty in inferred infectors.
+By default, entropy is normalised between 0 (complete certainty) and 1 (maximum uncertainty).
 }
 \details{
-Entropy measures uncertainty in inferred infectors across posterior samples. It is computed as:
+Entropy quantifies uncertainty in inferred infectors across posterior samples using the Shannon entropy formula:
 
-\deqn{H(X) = -\sum p_i \log p_i}
+\deqn{H(X) = -\sum p_i log(p_i)}
 
-where \(p_i\) is the proportion of times each infector is inferred for a case.
+where \eqn{p_i} is the proportion of times each infector is inferred. If \code{normalise = TRUE}, entropy is scaled by its maximum possible value, \eqn{log(K)}, where \eqn{K} is the number of distinct inferred infectors:
 
-If \code{normalise = TRUE}, entropy is scaled by its maximum possible value, \(\log K\), where \(K\) is the number of distinct inferred infectors:
+\deqn{H^*(X) = \frac{H(X)}{log(K)}}
 
-\deqn{H^*(X) = \frac{H(X)}{\log K}}
-
-This ensures values range from 0 to 1, where:
+This normalisation ensures values range from 0 to 1:
 \itemize{
-\item \strong{0} complete certainty — the same infector is inferred across all samples.
-\item \strong{1} maximum uncertainty — all infectors are equally likely.
+\item \strong{0}: Complete certainty — the same infector is inferred across all samples.
+\item \strong{1}: Maximum uncertainty — all infectors are equally likely.
 }
 }
 \examples{
+
 # High entropy
 out <- data.frame(alpha_1 = sample(c("2", "3"), 100, replace = TRUE),
                   alpha_2 = sample(c("1", "3"), 100, replace = TRUE))
@@ -43,8 +42,8 @@ class(out) <- c("outbreaker_chains", class(out))
 get_entropy(out)
 
 # Low entropy
-out <- data.frame(alpha_1 = sample(c("2", "3"), 100, replace = TRUE, prob = c(0.9, 0.1)),
-                  alpha_2 = sample(c("1", "3"), 100, replace = TRUE, prob = c(0.9, 0.1)))
+out <- data.frame(alpha_1 = sample(c("2", "3"), 100, replace = TRUE, prob = c(0.95, 0.05)),
+                  alpha_2 = sample(c("1", "3"), 100, replace = TRUE, prob = c(0.95, 0.05)))
 class(out) <- c("outbreaker_chains", class(out))
 get_entropy(out)
 

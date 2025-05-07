@@ -9,22 +9,23 @@ get_trees(out, kappa = FALSE, t_inf = FALSE, ...)
 \arguments{
 \item{out}{A data frame of class \code{outbreaker_chains}.}
 
-\item{kappa}{A logical indicating whether to include \code{kappa} values in the output. Default is \code{FALSE}.}
+\item{kappa}{Logical. If \code{TRUE}, includes \code{kappa} values in the output. Default is \code{FALSE}.}
 
-\item{t_inf}{A logical indicating whether to include infection times (\code{t_inf}) in the output. Default is \code{FALSE}.}
+\item{t_inf}{Logical. If \code{TRUE}, includes infection times (\code{t_inf}) in the output. Default is \code{FALSE}.}
 
-\item{...}{Additional named vectors from the original linelist to include as columns (e.g., \code{loc = linelist$location}).}
+\item{...}{Additional vectors to include as columns in the output. Must be given in the same order as used in \code{outbreaker()}.}
 }
 \value{
-A list of data frames. Each data frame contains 'from' and 'to' columns, and optionally includes kappa, t_inf, and additional columns.
+A list of data frames, one per posterior sample. Each data frame has at least 'from' and 'to' columns.
 }
 \description{
-Generates a list of data frames representing posterior transmission trees from an \code{outbreaker_chains} object.
-Each tree is represented as a data frame with 'from' and 'to' columns, and optionally includes additional columns.
+Generates a list of data frames representing posterior transmission trees from an
+\code{outbreaker_chains} object. Each tree contains 'from' and 'to' columns, and may
+optionally include \code{kappa}, \code{t_inf}, and user-supplied columns.
 }
 \examples{
-\dontrun{
-get_trees(out, ids = ids, group = group, dates = dates)
-}
-
+get_trees(out, id = linelist$id,
+               name = linelist$name,
+               group = linelist$group,
+               onset = linelist$onset)
 }

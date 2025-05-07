@@ -1,15 +1,13 @@
-#' Replace integers from the outbreaker2 output with unique identifiers.
+#' Replace integers in outbreaker2 output with unique identifiers
 #'
-#' @param out A data.frame of class "outbreaker_chains".
-#' @param ids A vector of IDs from the original linelist, see outbreaker2::outbreaker_data().
+#' @param out A data frame of class \code{outbreaker_chains}.
+#' @param ids A vector of IDs from the original linelist (see \code{outbreaker2::outbreaker_data()}).
 #'
-#' @return The outbreaker_chains data.frame with the integers replaced by the corresponding IDs.
+#' @return A data frame of class \code{outbreaker_chains} with integers replaced by the corresponding IDs.
 #'
 #' @export
 #' @examples
-#' \dontrun{
-#' identify(out, ids)
-#' }
+#' identify(out, id = linelist$name)
 #'
 identify <- function(out, ids) {
   # Check inputs

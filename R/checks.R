@@ -16,3 +16,24 @@ is_outbreaker_chains <- function(out) {
   }
   return(TRUE)
 }
+
+
+#' Check if the object conforms to linelist expectations
+#'
+#' This function checks if the input is a data frame and contains an 'id' column,
+#' as expected for a linelist.
+#'
+#' @param linelist The object to be checked.
+#'
+#' @return TRUE if the object is a data frame with an 'id' column; otherwise, stops with an error.
+#'
+#' @keywords internal
+is_linelist <- function(linelist) {
+  if (!is.data.frame(linelist)) {
+    stop("'linelist' must be a data frame.")
+  }
+  if (!"id" %in% names(linelist)) {
+    stop("'linelist' must contain an 'id' column.")
+  }
+  return(TRUE)
+}

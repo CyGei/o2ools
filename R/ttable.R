@@ -1,19 +1,20 @@
-#' Compute the transmission table
+#' Compute the transmission contingency table
 #'
-#' Generates a contingency table given the 'from' and 'to' vectors.
+#' Generates a contingency table based on 'from' (infector) and 'to' (infectee) vectors.
 #'
 #' @param from A vector of infectors.
 #' @param to A vector of infectees.
-#' @param levels Optional. A vector of levels for the factors. Defaults to unique, sorted values of 'from' and 'to'.
-#' @param ... Additional arguments to be passed to the 'table' function.
+#' @param levels Optional. A vector of factor levels. Defaults to the unique, sorted values of 'from' and 'to'.
+#' @param ... Additional arguments passed to the \code{table} function.
 #'
-#' @return A contingency table representing the counts of infectors (rows) and infectees (columns) in each group (level).
+#' @return A contingency table of infectors (rows) and infectees (columns).
 #'
 #' @examples
 #' from <- c("A", "A", NA, "C", "C", "C")
 #' to <- c("A", "B", "B", "C", "C", "C")
 #' ttable(from, to)
 #' @export
+#'
 ttable <- function(from, to, levels = NULL, ...) {
   if (!is.vector(from) || !is.vector(to) || length(from) != length(to)) {
     stop("'from' and 'to' must be vectors of the same length.")

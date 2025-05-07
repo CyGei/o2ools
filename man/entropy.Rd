@@ -9,7 +9,7 @@ entropy(x, normalise = TRUE)
 \arguments{
 \item{x}{A character vector representing observed categorical values.}
 
-\item{normalise}{Logical. If \code{TRUE}, entropy is normalised to range between 0 and 1. If \code{FALSE}, raw Shannon entropy is returned.}
+\item{normalise}{Logical. If \code{TRUE}, entropy is normalised to range from 0 to 1. If \code{FALSE}, returns raw Shannon entropy.}
 }
 \value{
 A numeric value representing the entropy of \code{x}.

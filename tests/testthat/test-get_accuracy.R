@@ -1,35 +1,32 @@
+
 # Mock data for testing
-mock_out <- data.frame(
-  alpha_1 = c(NA, NA, NA, NA),
-  alpha_2 = c(1, 1, 1, 3),
-  alpha_3 = c(2, 2, 4, 2),
-  alpha_4 = c(3, 3, 3, 1),
-  kappa_1 = c(NA, NA, NA, NA),
-  kappa_2 = c(1, 1, 1, 1),
-  kappa_3 = c(2, 4, 4, 2),
-  kappa_4 = c(1, 1, 3, 2)
+mock_out_acc <- data.frame(
+  alpha_1 = c(NA, NA, "2"),
+  alpha_2 = c("1", "1", "1"),
+  alpha_3 = c("1", "2", "2")
 )
-class(mock_out) <- c("outbreaker_chains", class(mock_out))
+class(mock_out_acc) <- c("outbreaker_chains", "data.frame")
 
-mock_true_tt <- data.frame(
-  from = c("1", "2", "3"),
-  to = c("2", "3", "4")
+true_tree_acc <- data.frame(
+  from = c(NA, "1", "1"),
+  to = c("1", "2", "3"),
+  stringsAsFactors = FALSE
 )
 
-mock_est_tt <- list(
-  data.frame(
-    from = c("1", "2", "3"),
-    to = c("2", "3", "4")
-  ),
-  data.frame(
-    from = c("3", "2", "1"),
-    to = c("2", "1", "4")
-  )
-)
+test_that("get_accuracy calculates correctly", {
+  expected_accuracies <- c(3/3, 2/3, 1/3)
 
-test_that("get_accuracy computes correct accuracy values", {
-  result <- get_accuracy(mock_est_tt, mock_true_tt)
-  expect_length(result, length(mock_est_tt))
-  #expect_true(all(result >= 0 & result <= 1))
-  expect_equal(result, c(1, 0))
+  acc <- get_accuracy(mock_out_acc, true_tree_acc)
+  expect_equal(acc, expected_accuracies)
+  expect_length(acc, nrow(mock_out_acc))
 })
+
+test_that("get_accuracy handles fully incorrect tree", {
+  mock_out_incorrect <- data.frame(alpha_1 = "2", alpha_2 = "1")
+  class(mock_out_incorrect) <- c("outbreaker_chains", "data.frame")
+  true_tree_simple <- data.frame(from = c(NA, "1"), to = c("1", "2"), stringsAsFactors = FALSE)
+  # Posterior tree 1: 2->1, 1->2. True tree: NA->1, 1->2. Correct: 1 (1->2)
+  acc <- get_accuracy(mock_out_incorrect, true_tree_simple)
+  expect_equal(acc, c(1/2))
+})
+
