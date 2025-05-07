@@ -23,6 +23,8 @@ Suggests:
     igraph,
     tidygraph,
     ggraph
+Remotes:
+    CyGei/linktree
 Config/testthat/edition: 3
 URL: https://cygei.github.io/o2ools/
 Depends: 
