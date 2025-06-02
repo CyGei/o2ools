@@ -26,8 +26,9 @@ Suggests:
 Remotes:
     CyGei/linktree
 Config/testthat/edition: 3
-URL: https://cygei.github.io/o2ools/
 Depends: 
     R (>= 3.5)
 LazyData: true
 VignetteBuilder: knitr
+URL: https://github.com/CyGei/o2ools, https://cygei.github.io/o2ools/
+BugReports: https://github.com/CyGei/o2ools/issues
