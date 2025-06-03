@@ -51,7 +51,7 @@ head(out_id)
 
 ## Get individual trees
 
-To extract the individual trees from the posterior sample, we can use `get_trees()`. This function will return a list of trees, one for each sample in the posterior. You can add additional *outbreaker2* results to the trees, such as the infection times (`t_inf`), the number of generations (`kappa`) and other attributes from the linelist. Any attribute from the linelist has to be in the same order as the cases in the linelist.
+To extract the individual trees from the posterior sample, we use `get_trees()`. This function will return a list of trees, one for each sample in the posterior. You can add additional *outbreaker2* results to the trees, such as the infection times (`t_inf`), the number of generations (`kappa`) and other attributes from the linelist.
 
 ```{r}
 trees <- get_trees(out_id, kappa = TRUE, t_inf = TRUE, group = linelist$group)
@@ -90,7 +90,8 @@ barplot(
 
 ```
 
-## Augment the linelist with outbreaker's results
+## Visualisation
+### Augment the linelist with *outbreaker2*'s results
 
 To add the results from *outbreaker2* to the linelist, we can use `augment_linelist()`. This function will add summary statistics for each case, such as the infection times inferred by *outbreaker2*.
 
@@ -108,9 +109,9 @@ o2linelist <- augment_linelist(
 head(o2linelist)
 ```
 
-## Consensus tree
+### Consensus tree
 
-"A consensus tree represents, for each case, their most frequent ancestor across the posterior sample. It provides a useful summary of the results but may violate the strict topological constraints of a tree, as it can include cycles (e.g. A is the most frequent ancestor of B, but B is also the most frequent ancestor of A). Here, `frequency` refers to the proportion of posterior samples in which the infector–infectee pair appears.
+A consensus tree represents, for each case, their most frequent ancestor across the posterior sample. It provides a useful summary of the results but may violate the strict topological constraints of a tree, as it can include cycles (e.g. A is the most frequent ancestor of B, but B is also the most frequent ancestor of A). Here, `frequency` refers to the proportion of posterior samples in which the infector–infectee pair appears.
 
 ```{r}
 consensus_tree <- get_consensus(out)
@@ -210,7 +211,7 @@ p <- ggraph(layout_data)+
 print(p)
 ```
 
-## Maximum posterior tree
+### Maximum posterior tree
 
 The maximum posterior tree is the single most likely transmission tree, corresponding to the MCMC iteration with the highest posterior probability. You can extract it as follows:
 
@@ -225,14 +226,12 @@ epi <- make_epicontacts(
 )
 ```
 
-You can also use `filter_chain()` to restrict the output to trees that meet a specific condition. For instance, to keep only direct transmissions (i.e. `kappa == 1`), run:
+You can also use `filter_chain()` to restrict the output to "trees" that meet a specific condition. For instance, to keep only direct transmissions (i.e. `kappa == 1`), run:
 
 ```{r}
 out_direct <- filter_chain(out, param = "kappa", thresh = 1, comparator = "==", target = "alpha")
-
 ```
-This masks any transmission links involving intermediate cases, allowing you to focus on direct infector–infectee pairs.
+This **masks** any transmission links involving intermediate cases, allowing you to focus on direct infector–infectee pairs.
 
-# Future work
-
-We'll include additional function to compute the case reproduction number and the serial interval. For additional analyses check the other vignettes in the package.
+# Additional analyses
+For additional analyses check the other vignettes on the package's website.
