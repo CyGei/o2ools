@@ -42,6 +42,7 @@
 <li><a class="dropdown-item" href="../articles/extended_analyses.html">Extended analyses</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -166,13 +167,12 @@ case 1, etc.</p>
 <div class="section level3">
 <h3 id="get-individual-trees">Get individual trees<a class="anchor" aria-label="anchor" href="#get-individual-trees"></a>
 </h3>
-<p>To extract the individual trees from the posterior sample, we can use
+<p>To extract the individual trees from the posterior sample, we use
 <code><a href="../reference/get_trees.html">get_trees()</a></code>. This function will return a list of trees, one
 for each sample in the posterior. You can add additional
 <em>outbreaker2</em> results to the trees, such as the infection times
 (<code>t_inf</code>), the number of generations (<code>kappa</code>) and
-other attributes from the linelist. Any attribute from the linelist has
-to be in the same order as the cases in the linelist.</p>
+other attributes from the linelist.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">trees</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_trees.html">get_trees</a></span><span class="op">(</span><span class="va">out_id</span>, kappa <span class="op">=</span> <span class="cn">TRUE</span>, t_inf <span class="op">=</span> <span class="cn">TRUE</span>, group <span class="op">=</span> <span class="va">linelist</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
 <span><span class="co">#100th sample</span></span>
@@ -230,8 +230,11 @@ about a case’s ancestry, and 1 indicates maximum uncertainty.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="augment-the-linelist-with-outbreakers-results">Augment the linelist with outbreaker’s results<a class="anchor" aria-label="anchor" href="#augment-the-linelist-with-outbreakers-results"></a>
+<h3 id="visualisation">Visualisation<a class="anchor" aria-label="anchor" href="#visualisation"></a>
 </h3>
+<div class="section level4">
+<h4 id="augment-the-linelist-with-outbreaker2s-results">Augment the linelist with <em>outbreaker2</em>’s results<a class="anchor" aria-label="anchor" href="#augment-the-linelist-with-outbreaker2s-results"></a>
+</h4>
 <p>To add the results from <em>outbreaker2</em> to the linelist, we can
 use <code><a href="../reference/augment_linelist.html">augment_linelist()</a></code>. This function will add summary
 statistics for each case, such as the infection times inferred by
@@ -263,10 +266,10 @@ statistics for each case, such as the infection times inferred by
 <span><span class="co">#&gt; 5    1.00000         1         1</span></span>
 <span><span class="co">#&gt; 6    1.00000         1         1</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="consensus-tree">Consensus tree<a class="anchor" aria-label="anchor" href="#consensus-tree"></a>
-</h3>
-<p>“A consensus tree represents, for each case, their most frequent
+<div class="section level4">
+<h4 id="consensus-tree">Consensus tree<a class="anchor" aria-label="anchor" href="#consensus-tree"></a>
+</h4>
+<p>A consensus tree represents, for each case, their most frequent
 ancestor across the posterior sample. It provides a useful summary of
 the results but may violate the strict topological constraints of a
 tree, as it can include cycles (e.g. A is the most frequent ancestor of
@@ -373,9 +376,9 @@ object and plot it using the <em>ggraph</em> package.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code></pre></div>
 <p><img src="o2ools_files/figure-html/unnamed-chunk-9-1.png" width="100%"></p>
 </div>
-<div class="section level3">
-<h3 id="maximum-posterior-tree">Maximum posterior tree<a class="anchor" aria-label="anchor" href="#maximum-posterior-tree"></a>
-</h3>
+<div class="section level4">
+<h4 id="maximum-posterior-tree">Maximum posterior tree<a class="anchor" aria-label="anchor" href="#maximum-posterior-tree"></a>
+</h4>
 <p>The maximum posterior tree is the single most likely transmission
 tree, corresponding to the MCMC iteration with the highest posterior
 probability. You can extract it as follows:</p>
@@ -389,20 +392,21 @@ probability. You can extract it as follows:</p>
 <span>  directed <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>You can also use <code><a href="../reference/filter_chain.html">filter_chain()</a></code> to restrict the output
-to trees that meet a specific condition. For instance, to keep only
+to “trees” that meet a specific condition. For instance, to keep only
 direct transmissions (i.e. <code>kappa == 1</code>), run:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">out_direct</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filter_chain.html">filter_chain</a></span><span class="op">(</span><span class="va">out</span>, param <span class="op">=</span> <span class="st">"kappa"</span>, thresh <span class="op">=</span> <span class="fl">1</span>, comparator <span class="op">=</span> <span class="st">"=="</span>, target <span class="op">=</span> <span class="st">"alpha"</span><span class="op">)</span></span></code></pre></div>
-<p>This masks any transmission links involving intermediate cases,
-allowing you to focus on direct infector–infectee pairs.</p>
+<p>This <strong>masks</strong> any transmission links involving
+intermediate cases, allowing you to focus on direct infector–infectee
+pairs.</p>
+</div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="future-work">Future work<a class="anchor" aria-label="anchor" href="#future-work"></a>
+<h2 id="additional-analyses">Additional analyses<a class="anchor" aria-label="anchor" href="#additional-analyses"></a>
 </h2>
-<p>We’ll include additional function to compute the case reproduction
-number and the serial interval. For additional analyses check the other
-vignettes in the package.</p>
+<p>For additional analyses check the other vignettes on the package’s
+website.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
