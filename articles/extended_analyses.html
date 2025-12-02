@@ -48,7 +48,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/CyGei/o2ools/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/CyGei/o2ools" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -64,7 +64,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Extended analyses</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/CyGei/o2ools/blob/main/vignettes/extended_analyses.Rmd" class="external-link"><code>vignettes/extended_analyses.Rmd</code></a></small>
+
       <div class="d-none name"><code>extended_analyses.Rmd</code></div>
     </div>
 
@@ -114,7 +114,7 @@ with the <code>get_Ri</code> function:</p>
 <span>       y <span class="op">=</span> <span class="st">"Mean % of cases"</span>,</span>
 <span>       title <span class="op">=</span> <span class="st">"Posterior offspring distribution with 95% credible intervals"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="extended_analyses_files/figure-html/unnamed-chunk-3-1.png" width="100%"></p>
+<p><img src="extended_analyses_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="serial-interval">Serial interval<a class="anchor" aria-label="anchor" href="#serial-interval"></a>
@@ -134,7 +134,7 @@ density functionusing with <code><a href="../reference/get_si.html">get_si()</a>
 <span>              alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"serial interval"</span>, y <span class="op">=</span> <span class="st">"Percent"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="extended_analyses_files/figure-html/unnamed-chunk-4-1.png" width="100%"></p>
+<p><img src="extended_analyses_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="model-convergence">Model convergence<a class="anchor" aria-label="anchor" href="#model-convergence"></a>
@@ -187,7 +187,7 @@ indistinguishable.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cygei.github.io/mixtree/" class="external-link">mixtree</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span>what <span class="op">=</span> <span class="fu">mixtree</span><span class="fu">::</span><span class="va"><a href="https://cygei.github.io/epitree/reference/tree_test.html" class="external-link">tree_test</a></span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">trees</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span>what <span class="op">=</span> <span class="fu">mixtree</span><span class="fu">::</span><span class="va"><a href="https://cygei.github.io/mixtree/reference/tree_test.html" class="external-link">tree_test</a></span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">trees</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  method <span class="op">=</span> <span class="st">"chisq"</span>,</span>
 <span>  test_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>simulate.p.value <span class="op">=</span> <span class="cn">TRUE</span>, B <span class="op">=</span> <span class="fl">999</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -230,7 +230,7 @@ can do this by setting the <code>find_import</code> argument to
 <span><span class="op">}</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span>what <span class="op">=</span> <span class="fu">mixtree</span><span class="fu">::</span><span class="va"><a href="https://cygei.github.io/epitree/reference/tree_test.html" class="external-link">tree_test</a></span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">trees</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span>what <span class="op">=</span> <span class="fu">mixtree</span><span class="fu">::</span><span class="va"><a href="https://cygei.github.io/mixtree/reference/tree_test.html" class="external-link">tree_test</a></span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">trees</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  method <span class="op">=</span> <span class="st">"permanova"</span>,</span>
 <span>  test_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>permutations <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -311,20 +311,19 @@ mask non-direct transmissions (<em>i.e.</em> where
 <p>For a given tree, we can estimate the groups’ transmission
 assortativity coefficients with:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://doi.org/10.1000/journalname.paperdoi" class="external-link">linktree</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">linktree</span><span class="op">)</span></span>
 <span><span class="co"># staff-to-patient ratio</span></span>
 <span><span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hcw"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"patient"</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">max_post</span> <span class="op">&lt;-</span> <span class="va">trees</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.max</a></span><span class="op">(</span><span class="va">out</span><span class="op">$</span><span class="va">post</span><span class="op">)</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu">linktree</span><span class="fu">::</span><span class="fu"><a href="https://cygei.github.io/linktree/reference/get_delta.html" class="external-link">get_delta</a></span><span class="op">(</span>from <span class="op">=</span> <span class="va">max_post</span><span class="op">$</span><span class="va">from_group</span>, to <span class="op">=</span> <span class="va">max_post</span><span class="op">$</span><span class="va">to_group</span>, f <span class="op">=</span> <span class="va">ratio</span><span class="op">)</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu">linktree</span><span class="fu">::</span><span class="fu">get_delta</span><span class="op">(</span>from <span class="op">=</span> <span class="va">max_post</span><span class="op">$</span><span class="va">from_group</span>, to <span class="op">=</span> <span class="va">max_post</span><span class="op">$</span><span class="va">to_group</span>, f <span class="op">=</span> <span class="va">ratio</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
-<p><img src="extended_analyses_files/figure-html/unnamed-chunk-11-1.png" width="100%"></p>
 <p>To account for uncertainty in who infected whom, we can compute the
 posterior distribution of assortativity coefficients. This is done by
 estimating <code>delta</code> for each tree in the posterior sample.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">deltas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">trees</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">linktree</span><span class="fu">::</span><span class="fu"><a href="https://cygei.github.io/linktree/reference/get_delta.html" class="external-link">get_delta</a></span><span class="op">(</span>from <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">from_group</span>, to <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">to_group</span>, f <span class="op">=</span> <span class="va">ratio</span><span class="op">)</span></span>
+<span>  <span class="fu">linktree</span><span class="fu">::</span><span class="fu">get_delta</span><span class="op">(</span>from <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">from_group</span>, to <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">to_group</span>, f <span class="op">=</span> <span class="va">ratio</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"tree"</span><span class="op">)</span></span>
 <span></span>
@@ -334,7 +333,6 @@ estimating <code>delta</code> for each tree in the posterior sample.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hcw"</span> <span class="op">=</span> <span class="st">"orange"</span>, <span class="st">"patient"</span> <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.85</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="extended_analyses_files/figure-html/unnamed-chunk-12-1.png" width="100%"></p>
 <p>Convert <code>delta</code> to <code>gamma</code> for
 interpretatibilty:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -345,14 +343,9 @@ interpretatibilty:</p>
 <span>    q025 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">est</span>, <span class="fl">0.025</span><span class="op">)</span>,</span>
 <span>    q975 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">est</span>, <span class="fl">0.975</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span>.cols <span class="op">=</span> <span class="op">-</span><span class="va">group</span>, <span class="op">~</span> <span class="fu">linktree</span><span class="fu">::</span><span class="fu"><a href="https://cygei.github.io/linktree/reference/delta2gamma.html" class="external-link">delta2gamma</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span>.cols <span class="op">=</span> <span class="op">-</span><span class="va">group</span>, <span class="op">~</span> <span class="fu">linktree</span><span class="fu">::</span><span class="fu">delta2gamma</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gammas</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
-<span><span class="co">#&gt;   group    mean  q025  q975</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> hcw     4.75  4       5.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> patient 0.387 0.333   0.5</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gammas</span><span class="op">)</span></span></code></pre></div>
 <p>Healthcare workers are nearly 5 times more likely to infect other
 HCWs whereas patients are 2.6 (<code>1/0.387</code>) times more likely
 to infect other HCWs.</p>
@@ -369,7 +362,7 @@ to infect other HCWs.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

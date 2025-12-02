@@ -1,10 +1,10 @@
 pandoc: 3.1.11
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   extended_analyses: extended_analyses.html
   o2ools: o2ools.html
-last_built: 2025-06-04T16:50Z
+last_built: 2025-12-02T00:41Z
 urls:
   reference: https://cygei.github.io/o2ools/reference
   article: https://cygei.github.io/o2ools/articles
