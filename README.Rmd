@@ -8,6 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CyGei/o2ools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CyGei/o2ools/actions/workflows/R-CMD-check.yaml)
+[![CRANdownloads](https://cranlogs.r-pkg.org/badges/grand-total/o2ools)](https://CRAN.R-project.org/package=o2ools)
 [![CodeFactor](https://www.codefactor.io/repository/github/cygei/o2ools/badge)](https://www.codefactor.io/repository/github/cygei/o2ools)
 <!-- badges: end -->
 
